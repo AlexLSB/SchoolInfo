@@ -1,0 +1,17 @@
+Django==1.8.7
+MySQL-python==1.2.5
+Unidecode==0.04.18
+argparse==1.2.1
+decorator==4.0.4
+django-autoslug==1.7.2
+django-extensions==1.5.9
+ipython==4.0.0
+ipython-genutils==0.1.0
+path.py==8.1.2
+pexpect==4.0.1
+pickleshare==0.5
+ptyprocess==0.5
+simplegeneric==0.8.1
+six==1.10.0
+traitlets==4.0.0
+wsgiref==0.1.2

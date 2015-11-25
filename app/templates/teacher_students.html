@@ -1,0 +1,8 @@
+<h1>{{ teacher }}</h1>
+<h2>Предмет: {{ teacher.subject }}</h2>
+<span>Ученики</span>
+<ul>
+{% for student in student_list %}
+   <li> {{ student }} {{ student.school_class }} </li>
+{% endfor %}
+</ul>

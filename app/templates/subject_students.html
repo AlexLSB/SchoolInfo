@@ -1,0 +1,5 @@
+<h1>Предмет: {{ subject }}</h1>
+
+{% for student in student_list %}
+    {{ student }} {{ student.school_class }}. Преподаватель: {{ student.teacher }}<br>
+{% endfor %}
