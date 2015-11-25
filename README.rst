@@ -25,6 +25,7 @@ Schoolinfo
 #. Настройки БД
 
 .. code-block::
+
     cp app/local_settings.py.dist app/local_settings.py
     nano app/local_settings.py
 
