@@ -17,8 +17,8 @@ Schoolinfo
 
     .. code-block::
 
-    mysql -u <db_user> -p<db_pass> -e 'CREATE DATABASE `schoolinfo` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;'
-    mysql -u <db_user> -p<db_pass> schoolinfo << db_dump.sql
+        mysql -u <db_user> -p<db_pass> -e 'CREATE DATABASE `schoolinfo` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;'
+        mysql -u <db_user> -p<db_pass> schoolinfo << db_dump.sql
 
 
 #. Настройки БД
@@ -33,12 +33,12 @@ Schoolinfo
 
     .. code-block::
 
-    python manage.py runserver
+        python manage.py runserver
 
 
 #. Административная панель:
 
     .. code-block::
 
-    login: admin
-    pass: ivorydust21
+        login: admin
+        pass: ivorydust21
