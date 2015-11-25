@@ -25,8 +25,8 @@ Schoolinfo
 
     .. code-block::
 
-    cp app/local_settings.py.dist app/local_settings.py
-    nano app/local_settings.py
+        cp app/local_settings.py.dist app/local_settings.py
+        nano app/local_settings.py
 
 
 #. Запуск:
