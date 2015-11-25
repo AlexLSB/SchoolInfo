@@ -53,6 +53,9 @@ class SchoolClass(models.Model):
     def __unicode__(self):
         return u'%s%s (Школа %s)' % (self.grade, self.liter, self.school)
 
+    def get_absolute_url(self):
+        return reverse('school_class_detail', args=[self.pk])
+
 
   # Ученики.
 class Student(FullNameMixin, models.Model):

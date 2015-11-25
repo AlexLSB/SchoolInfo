@@ -1,15 +1,29 @@
 # -*- coding: utf-8 -*-
 from django.views import generic
-from app.models import Student, Teacher, SchoolClass, Subject
 from django.shortcuts import get_object_or_404
 from django.db.models import F
+from app.models import Student, Teacher, SchoolClass, Subject
+
+
+class TeacherListView(generic.ListView):
+    '''Список всех учителей'''
+    template_name = 'teacher_list.html'
+    model = Teacher
+
+    def get_queryset(self):
+        queryset = Teacher.objects.all().prefetch_related('subject')
+        return queryset
+
+
+class SchoolClassDetailView(generic.DetailView):
+    '''Страница класса'''
+    template_name = 'school_class_detail.html'
+    model = SchoolClass
 
 
 class TeacherStudentsView(generic.ListView):
-    template_name = 'teacher_students.html'
-    paginate_by = 25
-
     '''Список учеников данного преподавателя'''
+    template_name = 'teacher_students.html'
 
     def get_context_data(self, **kwargs):
         context = super(TeacherStudentsView, self).get_context_data(**kwargs)
@@ -90,5 +104,4 @@ class SubjectStudentsByClassView(SubjectStudentsView):
     def get_queryset(self):
         queryset = SchoolClass.objects.filter(teacher__subject__slug=self.kwargs['slug']).prefetch_related(
             'students')
-
         return queryset
