@@ -1,4 +1,5 @@
 from django.conf.urls import include, url
+from django.views.generic import RedirectView
 from django.contrib import admin
 import views
 
@@ -13,4 +14,5 @@ urlpatterns = [
     url(r'^subject-students/(?P<slug>[^/]*)/$', views.SubjectStudentsView.as_view(), name='subject_students'),
     url(r'^subject-students-by-teacher/(?P<slug>[^/]*)/$', views.SubjectStudentsByTeacherView.as_view(), name='subject_students_by_teacher'),
     url(r'^subject-students-by-class/(?P<slug>[^/]*)/$', views.SubjectStudentsByClassView.as_view(), name='subject_students_by_class'),
+    url(r'^$', RedirectView.as_view(pattern_name='subject_list'), name='homepage'),
 ]
