@@ -9,37 +9,36 @@ Schoolinfo
 
 #. Установка зависимостей:
 
-.. code-block::
+    .. code-block::
 
-    pip install -r requirements.txt
-
+        pip install -r requirements.txt
 
 #. Создание БД:
 
-.. code-block::
+    .. code-block::
 
-    mysql -u <db_user> -p<db_pass> -e 'CREATE DATABASE `schoolinfo` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;'
-    mysql -u <db_user> -p<db_pass> schoolinfo << db_dump.sql
+        mysql -u <db_user> -p<db_pass> -e 'CREATE DATABASE `schoolinfo` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;'
+        mysql -u <db_user> -p<db_pass> schoolinfo << db_dump.sql
 
 
 #. Настройки БД
 
-.. code-block::
+    .. code-block::
 
-    cp app/local_settings.py.dist app/local_settings.py
-    nano app/local_settings.py
+        cp app/local_settings.py.dist app/local_settings.py
+        nano app/local_settings.py
 
 
 #. Запуск:
 
-.. code-block::
+    .. code-block::
 
-    python manage.py runserver
+        python manage.py runserver
 
 
 #. Административная панель:
 
-.. code-block::
+    .. code-block::
 
-    login: admin
-    pass: ivorydust21
+        login: admin
+        pass: ivorydust21
