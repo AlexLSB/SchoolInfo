@@ -11,7 +11,7 @@ Schoolinfo
 
     .. code-block::
 
-    pip install -r requirements.txt
+        pip install -r requirements.txt
 
 #. Создание БД:
 
