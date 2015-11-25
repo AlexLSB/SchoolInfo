@@ -15,6 +15,12 @@ class TeacherListView(generic.ListView):
         return queryset
 
 
+class SubjectListView(generic.ListView):
+    '''Список всех предметов'''
+    template_name = 'subject_list.html'
+    model = Subject
+
+
 class SchoolClassDetailView(generic.DetailView):
     '''Страница класса'''
     template_name = 'school_class_detail.html'

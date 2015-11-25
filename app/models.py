@@ -46,7 +46,7 @@ class SchoolClass(models.Model):
         verbose_name_plural = u'Классы'
 
     school = models.ForeignKey('School', verbose_name=u'Школа', related_name='classes')
-    grade = models.IntegerField(verbose_name=u'Параллель')
+    grade = models.IntegerField(verbose_name=u'Параллель', db_index=True)
     liter = models.CharField(verbose_name=u'Литера', max_length=1)
     teacher = models.ManyToManyField('Teacher', verbose_name=u'Учитель', related_name='classes')
 

@@ -1,0 +1,4 @@
+<h1>Список предметов</h1>
+{% for subject in subject_list %}
+    <a href="{{ subject.get_absolute_url }}">{{ subject }}</a><br>
+{% endfor %}

@@ -31,7 +31,7 @@ class FullNameMixin(models.Model):
         abstract = True
 
     full_name = models.CharField(verbose_name=u'ФИО', max_length=255)
-    slug = models.SlugField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
 
     def save(self, *args, **kwargs):
         self.slug = orig = slugify(unidecode(self.full_name))
@@ -53,7 +53,7 @@ class TitleMixin(models.Model):
     class Meta:
         abstract = True
     title = models.CharField(verbose_name=u"Название", max_length=255, unique=True)
-    slug = models.SlugField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
 
     def save(self, *args, **kwargs):
         self.slug = orig = slugify(unidecode(self.title))
