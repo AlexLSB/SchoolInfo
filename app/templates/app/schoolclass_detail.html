@@ -16,7 +16,7 @@
 <h2>Список преподавателей {{ schoolclass.title }} класса</h2>
     <ul>
         {% for t in schoolclass.teacher.all %}
-            <li><a href="{{ t.get_absolute_url }} ">{{ t }}</a>({{t.subject}})</li>
+            <li><a href="{{ t.get_absolute_url }} ">{{ t }} </a>({{t.subject}})</li>
         {% endfor %}
     </ul>
 {% endblock %}
