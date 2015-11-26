@@ -1,5 +1,13 @@
-<h1>{{ schoolclass }}</h1>
 
+{% extends 'base.html' %}
+
+{% block title %}
+{{ schoolclass }}
+{% endblock %}
+
+
+{% block content %}
 {% for s in schoolclass.students.all %}
     {{ s }} <br>
 {% endfor %}
+{% endblock %}

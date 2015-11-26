@@ -1,4 +1,13 @@
-<h1>Список учителей</h1>
+
+{% extends 'base.html' %}
+
+{% block title %}
+Список учителей
+{% endblock %}
+
+
+{% block content %}
 {% for t in teacher_list %}
     <a href="{{ t.get_absolute_url }}">{{ t }}</a><span> - {{ t.subject }}</span><br>
 {% endfor %}
+{% endblock %}

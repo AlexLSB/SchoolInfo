@@ -1,8 +1,14 @@
-<h1>Предмет: {{ subject }}</h1>
+{% extends 'base.html' %}
 
+{% block title %}
+Предмет: {{ subject }}
+{% endblock %}
+
+{% block content %}
 {% for class in schoolclass_list %}
    <h2> Класс: {{ class }}</h2>
         {% for s in class.students.all %}
             {{ s }} {{ class }} <br>
         {% endfor %}<br>
 {% endfor %}
+{% endblock %}

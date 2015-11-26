@@ -1,7 +1,8 @@
 from django.conf.urls import include, url
-from django.views.generic import RedirectView
 from django.contrib import admin
 import views
+from django.conf import settings
+
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -14,5 +15,16 @@ urlpatterns = [
     url(r'^subject-students/(?P<slug>[^/]*)/$', views.SubjectStudentsView.as_view(), name='subject_students'),
     url(r'^subject-students-by-teacher/(?P<slug>[^/]*)/$', views.SubjectStudentsByTeacherView.as_view(), name='subject_students_by_teacher'),
     url(r'^subject-students-by-class/(?P<slug>[^/]*)/$', views.SubjectStudentsByClassView.as_view(), name='subject_students_by_class'),
-    url(r'^$', RedirectView.as_view(pattern_name='subject_list'), name='homepage'),
+    url(r'^aa/$', views.HomeView.as_view(), name='home'),
 ]
+
+
+if settings.DEBUG:
+    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+    urlpatterns += staticfiles_urlpatterns()
+else:
+    urlpatterns += patterns(
+        '',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT, 'show_indexes': True}),
+    )

@@ -4,6 +4,8 @@ from django.shortcuts import get_object_or_404
 from django.db.models import F
 from app.models import Student, Teacher, SchoolClass, Subject
 
+class HomeView(generic.TemplateView):
+    template_name = 'base.html'
 
 class TeacherListView(generic.ListView):
     '''Список всех учителей'''

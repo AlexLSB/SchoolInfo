@@ -18,7 +18,7 @@ Schoolinfo
     .. code-block::
 
         mysql -u <db_user> -p<db_pass> -e 'CREATE DATABASE `schoolinfo` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;'
-        mysql -u <db_user> -p<db_pass> schoolinfo << db_dump.sql
+        mysql -u <db_user> -p<db_pass> schoolinfo << dump_db.sql
 
 
 #. Настройки БД

@@ -38,8 +38,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
-    'app.settings.AppNameConfig',
+    #'django_extensions',
+ #   'app.settings.AppNameConfig',
+    'app',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,6 +53,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
+
 
 ROOT_URLCONF = 'app.urls'
 
@@ -66,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+		'django.core.context_processors.static',
             ],
         },
     },
@@ -91,15 +94,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'app', 'static')
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'compressor.finders.CompressorFinder',
+)
 STATIC_URL = '/static/'
 
 
-from django.apps import AppConfig
+#from django.apps import AppConfig
 
 
-class AppNameConfig(AppConfig):
-    name = u'app'
-    verbose_name = u"Школьная информационная система"
+#class AppNameConfig(AppConfig):
+#    name = u'app'
+#    verbose_name = u"Школьная информационная система"
 
 
 try:
