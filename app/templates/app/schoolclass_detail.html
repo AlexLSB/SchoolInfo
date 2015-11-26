@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+{{ schoolclass.title }} класс
+{% endblock %}
+
+
+{% block content %}
+<h2>Список учеников {{ schoolclass.title }} класса</h2>
+    <ul>
+        {% for s in schoolclass.students.all %}
+            <li>{{ s }}</li>
+        {% endfor %}
+    </ul>
+<h2>Список преподавателей {{ schoolclass.title }} класса</h2>
+    <ul>
+        {% for t in schoolclass.teacher.all %}
+            <li><a href="{{ t.get_absolute_url }} ">{{ t }}</a>({{t.subject}})</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

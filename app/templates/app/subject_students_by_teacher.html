@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+Предмет: {{ subject }}
+{% endblock %}
+
+
+{% block content %}
+{% for teacher in teacher_list %}
+    <h2> Преподаватель: {{ teacher }}</h2>
+    <ul>
+        {% for class in teacher.classes.all %}
+            {% for s in class.students.all %}
+                <li>{{ s }} {{ class }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endfor %}
+{% endblock %}

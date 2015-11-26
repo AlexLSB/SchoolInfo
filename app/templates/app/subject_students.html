@@ -7,8 +7,8 @@
 {% block content %}
 <h2>Список учеников (в алфавитном порядке)</h2>
 <ul>
-{% for student in student_list %}
-    <li> {{ student }} {{ student.school_class }}. Преподаватель: {{ student.teacher }}</li>
-{% endfor %}
+    {% for student in student_list %}
+        <li> {{ student }} {{ student.school_class }}. Преподаватель: {{ student.teacher }}</li>
+    {% endfor %}
 </ul>
 {% endblock %}

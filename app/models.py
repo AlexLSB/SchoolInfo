@@ -12,6 +12,9 @@ class School(TitleMixin, models.Model):
         verbose_name = u'Школа'
         verbose_name_plural = u'Школы'
 
+    def get_absolute_url(self):
+        return reverse('school_detail', args=[self.slug])
+
 
   # Учебные предметы.
 class Subject(TitleMixin):
@@ -53,8 +56,13 @@ class SchoolClass(models.Model):
     def __unicode__(self):
         return u'%s%s (Школа %s)' % (self.grade, self.liter, self.school)
 
+    @property
+    def title(self):
+        ''' Название класса (без школы) '''
+        return u'%s%s' % (self.grade, self.liter)
+
     def get_absolute_url(self):
-        return reverse('school_class_detail', args=[self.pk])
+        return reverse('schoolclass_detail', args=[self.pk])
 
 
   # Ученики.

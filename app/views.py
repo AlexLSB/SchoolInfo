@@ -2,14 +2,14 @@
 from django.views import generic
 from django.shortcuts import get_object_or_404
 from django.db.models import F
-from app.models import Student, Teacher, SchoolClass, Subject
+from app.models import Student, Teacher, SchoolClass, Subject, School
 
 class HomeView(generic.TemplateView):
     template_name = 'base.html'
 
+
 class TeacherListView(generic.ListView):
     '''Список всех учителей'''
-    template_name = 'teacher_list.html'
     model = Teacher
 
     def get_queryset(self):
@@ -17,21 +17,37 @@ class TeacherListView(generic.ListView):
         return queryset
 
 
+class SchoolListView(generic.ListView):
+    '''Список всех учителей'''
+    model = School
+
+
+class SchoolDetailView(generic.DetailView):
+    '''Список всех учителей'''
+    model = School
+
+    def get_queryset(self):
+        qs = super(SchoolDetailView, self).get_queryset()
+        return qs.prefetch_related('classes')
+
+
 class SubjectListView(generic.ListView):
     '''Список всех предметов'''
-    template_name = 'subject_list.html'
     model = Subject
 
 
 class SchoolClassDetailView(generic.DetailView):
     '''Страница класса'''
-    template_name = 'school_class_detail.html'
     model = SchoolClass
+
+    def get_queryset(self):
+        qs = super(SchoolClassDetailView, self).get_queryset()
+        return qs.prefetch_related('students', 'teacher', 'teacher__subject')
 
 
 class TeacherStudentsView(generic.ListView):
     '''Список учеников данного преподавателя'''
-    template_name = 'teacher_students.html'
+    template_name = 'app/teacher_students.html'
 
     def get_context_data(self, **kwargs):
         context = super(TeacherStudentsView, self).get_context_data(**kwargs)
@@ -47,7 +63,7 @@ class TeacherGradeStudentsByClassView(TeacherStudentsView):
     '''1 (1). Список учеников данного преподавателя конкретной параллели (например,
         по десятым классам) всех школ с группировкой по классам и сортировкой по
     алфавиту внутри каждого класса, с указанием школы и класса для каждого ученика'''
-    template_name = 'teacher_grade_students_by_class.html'
+    template_name = 'app/teacher_grade_students_by_class.html'
     context_object_name = 'teachers_classes'
 
     def get_context_data(self, **kwargs):
@@ -66,7 +82,7 @@ class TeacherGradeStudentsView(TeacherGradeStudentsByClassView):
     '''1 (2). Список учеников данного преподавателя конкретной параллели (например,
         по десятым классам) всех школ без группировки, с сортировкой по алфавиту
      и с указанием школы и класса для каждого ученика.'''
-    template_name = 'teacher_grade_students.html'
+    template_name = 'app/teacher_grade_students.html'
     context_object_name = 'student_list'
 
     def get_queryset(self):
@@ -79,7 +95,7 @@ class TeacherGradeStudentsView(TeacherGradeStudentsByClassView):
 class SubjectStudentsView(generic.ListView):
     '''2.2. Список учеников, обучающихся по данному предмету общим
     алфавитным списком с указанием школы, класса и ФИО преподавателя'''
-    template_name = 'subject_students.html'
+    template_name = 'app/subject_students.html'
 
     def get_context_data(self, **kwargs):
         context = super(SubjectStudentsView, self).get_context_data(**kwargs)
@@ -97,7 +113,7 @@ class SubjectStudentsView(generic.ListView):
 class SubjectStudentsByTeacherView(SubjectStudentsView):
     '''2.1. Список учеников, обучающихся по данному предмету с группировкой по преподавателям
     с указанием для каждого ученика школы и класса'''
-    template_name = 'subject_students_by_teacher.html'
+    template_name = 'app/subject_students_by_teacher.html'
 
     def get_queryset(self):
         queryset = Teacher.objects.filter(subject__slug=self.kwargs['slug']).prefetch_related(
@@ -107,7 +123,7 @@ class SubjectStudentsByTeacherView(SubjectStudentsView):
 
 class SubjectStudentsByClassView(SubjectStudentsView):
     '''2.1. Список учеников, обучающихся по данному предмету с группировкой по классам'''
-    template_name = 'subject_students_by_class.html'
+    template_name = 'app/subject_students_by_class.html'
 
     def get_queryset(self):
         queryset = SchoolClass.objects.filter(teacher__subject__slug=self.kwargs['slug']).prefetch_related(

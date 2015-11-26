@@ -10,8 +10,8 @@
 <h2>Предмет: {{ teacher.subject }}</h2>
 <span>Все ученики {{ grade }}-ых классов</span>
 <ul>
-{% for student in student_list %}
-   <li> {{ student }} {{ student.school_class }} </li>
-{% endfor %}
+    {% for student in student_list %}
+       <li> {{ student }} {{ student.school_class }} </li>
+    {% endfor %}
 </ul>
 {% endblock %}

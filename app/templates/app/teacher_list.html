@@ -1,0 +1,15 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+Список учителей
+{% endblock %}
+
+
+{% block content %}
+<ul>
+    {% for t in teacher_list %}
+        <li><a href="{{ t.get_absolute_url }}">{{ t }}</a><span> - {{ t.subject }}</span></li>
+    {% endfor %}
+</ul>
+{% endblock %}

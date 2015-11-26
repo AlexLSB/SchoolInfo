@@ -6,9 +6,11 @@
 
 {% block content %}
 {% for class in schoolclass_list %}
-   <h2> Класс: {{ class }}</h2>
+    <h2> Класс: {{ class }}</h2>
+    <ul>
         {% for s in class.students.all %}
-            {{ s }} {{ class }} <br>
+            <li>{{ s }} {{ class }}</li>
         {% endfor %}<br>
+    </ul>
 {% endfor %}
 {% endblock %}

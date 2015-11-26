@@ -1,0 +1,15 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+Список школ
+{% endblock %}
+
+
+{% block content %}
+<ul>
+    {% for s in school_list %}
+        <li><a href="{{ s.get_absolute_url }}">Школа {{ s }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

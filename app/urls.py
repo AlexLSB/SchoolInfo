@@ -7,8 +7,11 @@ from django.conf import settings
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^teacher-list/$', views.TeacherListView.as_view(), name='teacher_list'),
+    url(r'^school-list/$', views.SchoolListView.as_view(), name='school_list'),
+    url(r'^school-detail/(?P<slug>[^/]*)/$', views.SchoolDetailView.as_view(), name='school_detail'),
+    url(r'^schoolclass-detail/(?P<pk>[^/]*)/$', views.SchoolClassDetailView.as_view(), name='schoolclass_detail'),
     url(r'^subject-list/$', views.SubjectListView.as_view(), name='subject_list'),
-    url(r'^school-class-detail/(?P<pk>[^/]*)/$', views.SchoolClassDetailView.as_view(), name='school_class_detail'),
+
     url(r'^teacher-students/(?P<slug>[^/]*)/$', views.TeacherStudentsView.as_view(), name='teacher_students'),
     url(r'^teacher-grade-students/(?P<slug>[^/]*)/(?P<grade>[^/]*)/$', views.TeacherGradeStudentsView.as_view(), name='teacher_grade_students'),
     url(r'^teacher-grade-students-by-class/(?P<slug>[^/]*)/(?P<grade>[^/]*)/$', views.TeacherGradeStudentsByClassView.as_view(), name='teacher_grade_students_by_class'),
