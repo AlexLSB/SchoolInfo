@@ -8,10 +8,10 @@
 
 {% block content %}
 <h2>Предмет: {{ teacher.subject }}</h2>
-<h3>{{ grade }}-е классы</h3>
+<h2>{{ grade }}-е классы</h2>
 <table>
 {% for class in teachers_classes %}
-    <tr><td>{{ class }}</td></tr>
+    <tr><td><h3>{{ class }}</h3></td></tr>
     {% for student in class.students.all %}
     <tr>
        <td> {{ student }}</td><td>{{ student.school_class }} </td>

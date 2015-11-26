@@ -25,6 +25,22 @@
 		<li><a href="{% url 'school_list' %}">Список школ</a></li>
 		</ul>
 		</div>
+		<h2>Список учеников Математики:</h2>
+		<div class="box">
+		<ul>
+		<li><a href="{% url 'subject_students' 'matematika' %}">Список учеников в алфавитном порядке</a></li>
+		<li><a href="{% url 'subject_students_by_class' 'matematika' %}">Список учеников с группировкой по классам</a></li>
+		<li><a href="{% url 'subject_students_by_teacher' 'matematika' %}">Список учеников с группировкой по преподавателю</a></li>
+		</ul>
+		</div>
+		<h2>Список учеников Гришина Игоря Вадимовича:</h2>
+		<div class="box">
+		<ul>
+		<li><a href="{% url 'teacher_students' 'grishin-igor-vadimovich' %}">Список учеников в алфавитном порядке</a></li>
+		<li><a href="{% url 'teacher_grade_students' 'grishin-igor-vadimovich' 2 %}">Список учеников 2-х классов</a></li>
+		<li><a href="{% url 'teacher_grade_students_by_class' 'grishin-igor-vadimovich' 2 %}">Список учеников 2-х классов с группировкой по классам</a></li>
+		</ul>
+		</div>
 	</div>
 
 	<div id="content">

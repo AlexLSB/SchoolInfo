@@ -8,7 +8,7 @@
 
 {% block content %}
 <h2>Предмет: {{ teacher.subject }}</h2>
-<span>Все ученики {{ grade }}-ых классов</span>
+<h3>Все ученики {{ grade }}-ых классов:</h3>
 <ul>
     {% for student in student_list %}
        <li> {{ student }} {{ student.school_class }} </li>
