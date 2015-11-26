@@ -38,9 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django_extensions',
- #   'app.settings.AppNameConfig',
-    'app',
+    'django_extensions',
+    'app.settings.AppNameConfig',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -103,12 +102,12 @@ STATICFILES_FINDERS = (
 STATIC_URL = '/static/'
 
 
-#from django.apps import AppConfig
+from django.apps import AppConfig
 
 
-#class AppNameConfig(AppConfig):
-#    name = u'app'
-#    verbose_name = u"Школьная информационная система"
+class AppNameConfig(AppConfig):
+    name = u'app'
+    verbose_name = u"Школьная информационная система"
 
 
 try:
