@@ -11,38 +11,17 @@
 <div id="wrap">
 	<div id="header">
 		<div id="headerlinks">
-		<a href="#" title="Blog">Blog</a>
-		<a href="#" title="About Us">About Us</a>
 		<a href="/admin/" title="Contact">Административная панель</a>
 		</div>
 		<h1><a href="/">Школьная информационная система</a></h1>
 	</div>
 
 	<div id="sidebar">
-		<h2>Last Posts:</h2>
+		<h2>Ссылки:</h2>
 		<div class="box">
 		<ul>
-		<li><a href="#">Hello World</a></li>
-		<li><a href="#">All starts here</a></li>
-		<li><a href="#">Whatever</a></li>
-		<li><a href="#">Simple Build</a></li>
-		<li><a href="#">Testing</a></li>
-		</ul>
-		</div>
-
-		<h2>Archive:</h2>
-		<div class="box">
-		<ul>
-		<li><a href="#">January</a></li>
-		<li><a href="#">February</a></li>
-		</ul>
-		</div>
-
-		<h2>Sponsors:</h2>
-		<div class="box">
-		<ul>
-		<li><a href="#">Apple</a></li>
-		<li><a href="#">Microsoft</a></li>
+		<li><a href="{% url 'teacher_list' %}">Список преподавателей</a></li>
+		<li><a href="{% url 'subject_list' %}">Список предметов</a></li>
 		</ul>
 		</div>
 	</div>
@@ -65,11 +44,6 @@
 	</div>
 
 	<div id="footer">
-		<div style="float: right;">
-		<a href="#" title="Contact Us"><img src="{{ STATIC_URL }}img/contact.gif" alt="Contact" /></a>
-		<a href="#" title="Sitemap"><img src="{{ STATIC_URL }}img/sitemap.gif" alt="Sitemap" /></a>
-		<a href="#" title="Rss Feed"><img src="{{ STATIC_URL }}img/rss.png" alt="Rss Feed" /></a>
-		</div>
 		Школьная информационная система
 	</div>
 </div>
